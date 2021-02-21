@@ -1,0 +1,48 @@
+{
+    "AT: Show IMSI": {
+        "prefix": "span",
+        "body": [
+            "AT+CIMI"
+        ],
+        "description": "Fetch IMSI from modem"
+    },
+    "AT: Show IMEI": {
+        "prefix": "span",
+        "body": [
+            "AT+CGSN=1"
+        ],
+        "description": "Fetch IMEI from modem"
+    },
+    "AT: Show allocated IP": {
+        "prefix": "span",
+        "body": [
+            "AT+CGPADDR"
+        ],
+        "description": "Show the allocated IP address"
+    },
+    "AT: Show APN configuration": {
+        "prefix": "span",
+        "body": [
+            "AT+CGDCONT?"
+        ],
+        "description": "Show APN configuration"
+    },
+    "AT: Send hello world": {
+        "prefix": "span",
+        "body": [
+            "AT+NSOCR=\"DGRAM\",17,8888,1",
+            "AT+NSOST=0,\"172.16.15.14\",1234,12,\"48656C6C6F20576F726C6421\"",
+            "AT+NSOCL=0"
+        ],
+        "description": "Generate hello world in hex and send it to Span"
+    },
+    "AT: SARA N2 APN Setup": {
+        "prefix": "span",
+        "body": [
+            "AT+CGDCONT=0,\"IP\",\"mda.lab5e\"",
+            "AT+NCONFIG=\"AUTOCONNECT\",\"TRUE\"",
+            "AT+NRB"
+        ],
+        "description": "Generate Span SARA N2 APN configuration"
+    }
+}

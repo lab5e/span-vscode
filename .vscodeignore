@@ -1,0 +1,12 @@
+.gitignore
+.vscode-test/**
+**/tsconfig.json
+**/.eslintrc.json
+**/.prettierrc
+.vscode
+.span
+node_modules
+out/
+src/
+tsconfig.json
+webpack.config.js

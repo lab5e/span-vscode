@@ -1,0 +1,153 @@
+{
+  "name": "span-vscode",
+  "displayName": "Span",
+  "description": "VSCode integration for the Span IoT Platform.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lab5e/span-vscode"
+  },
+  "icon": "media/l5e_whitebg.png",
+  "publisher": "lab5e",
+  "version": "0.1.1",
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:span-vscode.closeDeviceStream",
+    "onCommand:span-vscode.refresh",
+    "onCommand:span-vscode.initAPIKey",
+    "onView:span-vscode"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "snippets": [
+      {
+        "path": "./snippets/at.code-snippets"
+      }
+    ],
+    "viewsWelcome": [
+      {
+        "view": "span-vscode",
+        "contents": "Could not find any span collections, is your API key present and correct?\n[Configure API key](command:span-vscode.initAPIKey)"
+      }
+    ],
+    "configuration": {
+      "title": "Span",
+      "properties": {
+        "span.APIKeyPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Custom location to where you keep your `.span`-file. The extension will look in your home dir and workspace for a `.span`-file which should contain `TOKEN:YOUR_API_KEY`. Go to [Span console API Keys](https://span.lab5e.com/api-tokens-overview) to create your API Key."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "span-vscode",
+          "title": "Span Explorer",
+          "icon": "media/5_simple_mono.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "span-vscode.refresh",
+        "title": "Refresh"
+      },
+      {
+        "command": "span-vscode.closeDeviceStream",
+        "title": "Span: Close device streams"
+      },
+      {
+        "command": "span-vscode.initAPIKey",
+        "title": "Span: Initiate a Span API key file"
+      },
+      {
+        "command": "span-vscode.copyIMEI",
+        "title": "Copy IMEI",
+        "enablement": "view == span-vscode && viewItem == device"
+      },
+      {
+        "command": "span-vscode.copyIMSI",
+        "title": "Copy IMSI",
+        "enablement": "view == span-vscode && viewItem == device"
+      },
+      {
+        "command": "span-vscode.tailDeviceData",
+        "title": "Tail data",
+        "enablement": "view == span-vscode && viewItem == device"
+      }
+    ],
+    "views": {
+      "span-vscode": [
+        {
+          "id": "span-vscode",
+          "name": "Entitites",
+          "icon": "media/5_simple_mono.svg",
+          "contextualTitle": "Entities"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "span-vscode.refresh",
+          "when": "view == span-vscode",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "span-vscode.copyIMEI",
+          "when": "view == span-vscode && viewItem == device"
+        },
+        {
+          "command": "span-vscode.copyIMSI",
+          "when": "view == span-vscode && viewItem == device"
+        },
+        {
+          "command": "span-vscode.tailDeviceData",
+          "when": "view == span-vscode && viewItem == device"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "vscode:prepublish": "webpack --mode production",
+    "webpack": "webpack --mode development",
+    "webpack-dev": "webpack --mode development --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.53.0",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "axios": "^0.21.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.2.1",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "npm": "^7.5.4",
+    "ws": "^7.4.3"
+  }
+}
