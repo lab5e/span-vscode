@@ -19,7 +19,7 @@
   "activationEvents": [
     "onCommand:span-vscode.closeDeviceStream",
     "onCommand:span-vscode.refresh",
-    "onCommand:span-vscode.initAPIKey",
+    "onCommand:span-vscode.initAPIToken",
     "onView:span-vscode"
   ],
   "main": "./dist/extension.js",
@@ -32,7 +32,7 @@
     "viewsWelcome": [
       {
         "view": "span-vscode",
-        "contents": "Could not find any span collections, is your API key present and correct?\n[Configure API key](command:span-vscode.initAPIKey)"
+        "contents": "Could not find any span collections, is your API key present and correct?\n[Configure API key](command:span-vscode.initAPIToken)"
       }
     ],
     "configuration": {
@@ -64,7 +64,7 @@
         "title": "Span: Close device streams"
       },
       {
-        "command": "span-vscode.initAPIKey",
+        "command": "span-vscode.initAPIToken",
         "title": "Span: Initiate a Span API key file"
       },
       {

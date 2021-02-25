@@ -3,9 +3,9 @@ import * as fs from "fs";
 import * as os from "os";
 
 /**
- * Makes a best effort to get an API key for the project. It will first look for a `.span`-folder in the workspace, then the home directory of the user. If no token could be found, an empty string is returned.
+ * Makes a best effort to get an Span API token for the project. It will first look for a `.span`-folder in the workspace, then the home directory of the user. If no token could be found, an empty string is returned.
  */
-export const getAPIKey = async (): Promise<string> => {
+export const getSpanToken = async (): Promise<string> => {
   let potentialTokenLocations: { path: string; token: string }[] = [];
 
   // Check workspace folders
