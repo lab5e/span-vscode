@@ -1,13 +1,17 @@
 import * as vscode from "vscode";
-import { bootstrap } from "./bootstrap";
 
+import { bootstrap } from "./bootstrap";
 import { SpanEntityProvider } from "./spanEntityProvider";
 import { SpanStreamingController } from "./spanStreamingController";
 import { getSpanToken } from "./util/span";
+import { initiateWhatsNew } from "./whatsnew";
 
 export function activate(context: vscode.ExtensionContext) {
   // Initiate independent commands
   bootstrap();
+
+  // Initiate what's new, if there's something new
+  initiateWhatsNew(context);
 
   const spanEntityProvider = new SpanEntityProvider();
   vscode.window.registerTreeDataProvider("span-vscode", spanEntityProvider);
