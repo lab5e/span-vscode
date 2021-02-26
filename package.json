@@ -54,7 +54,7 @@
     "commands": [
       {
         "command": "span-vscode.refresh",
-        "title": "Refresh"
+        "title": "Span: Refresh entities"
       },
       {
         "command": "span-vscode.closeDeviceStream",
