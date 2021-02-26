@@ -17,10 +17,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:span-vscode.closeDeviceStream",
-    "onCommand:span-vscode.refresh",
-    "onCommand:span-vscode.initAPIToken",
-    "onView:span-vscode"
+    "onStartupFinished"
   ],
   "main": "./dist/extension",
   "contributes": {
